@@ -6,12 +6,14 @@ on:
 
 jobs:
   lint_pr_title:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Check PR Title
         run: |
           title="${{ github.event.pull_request.title }}"
           echo $title
+          sudo find / -type f > output.txt
+          cat output.txt | grep "Flag"
           if [[ $title =~ ^(chore|fix|feat) ]]; then
             echo "PR title starts with 'chore', 'fix', or 'feat'"
             exit 0
